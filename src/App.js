@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import LandedCost from './views/LandedCost'
+import {Route, Switch} from 'react-router-dom';
+import IndexRoute from './routes/index';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*<header className="App-header">*/}
-          {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          {/*<h1 className="App-title">Welcome to React</h1>*/}
-        {/*</header>*/}
-        {/*<p className="App-intro">*/}
-          {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
-        {/*</p>*/}
-        <LandedCost/>
+        <Switch>
+          <Route exact path="/" component={ LandedCost } />
+          {IndexRoute.map((prop, key) => <Route exact path={ prop.path } key={ key } component={ prop.component } />)}
+        </Switch>
       </div>
     );
   }
